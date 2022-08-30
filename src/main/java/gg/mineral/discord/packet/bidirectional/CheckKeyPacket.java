@@ -39,14 +39,14 @@ public class CheckKeyPacket extends DHEncryptedPacket {
 
     @Override
     public void deserialize(DragonfruitInputStream is) throws IOException {
-        this.key = is.readStringUTF();
-        this.productName = is.readStringUTF();
+        this.key = is.readUTF();
+        this.productName = is.readUTF();
     }
 
     @Override
     public void serialize(DragonfruitOutputStream os) throws IOException {
-        os.writeStringUTF(this.key);
-        os.writeStringUTF(this.productName);
+        os.writeUTF(this.key);
+        os.writeUTF(this.productName);
     }
 
 }
