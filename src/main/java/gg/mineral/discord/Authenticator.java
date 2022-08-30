@@ -59,19 +59,19 @@ public class Authenticator {
         ConsoleUtil.send(CC.YELLOW, "The product key is invalid.");
         try {
             Thread.sleep(3000);
+            System.exit(0);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.exit(0);
     }
 
     public static void expired() {
         ConsoleUtil.send(CC.YELLOW, "Your request has expired. Please try again.");
         try {
             Thread.sleep(3000);
+            System.exit(0);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.exit(0);
     }
 }
