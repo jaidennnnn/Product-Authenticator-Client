@@ -1,8 +1,12 @@
 package gg.mineral.discord.packet.bidirectional;
 
+import java.io.IOException;
+
 import gg.dragonfruit.network.Connection;
 import gg.dragonfruit.network.encryption.EndToEndEncryption;
 import gg.dragonfruit.network.packet.DHEncryptedPacket;
+import gg.dragonfruit.network.util.DragonfruitInputStream;
+import gg.dragonfruit.network.util.DragonfruitOutputStream;
 import gg.mineral.discord.Authenticator;
 
 public class CheckKeyPacket extends DHEncryptedPacket {
@@ -27,6 +31,18 @@ public class CheckKeyPacket extends DHEncryptedPacket {
     @Override
     public void received(Connection connection) {
         Authenticator.checkProductKey(key, productName);
+    }
+
+    @Override
+    public void deserialize(DragonfruitInputStream is) throws IOException {
+        this.key = is.readStringUTF();
+        this.productName = is.readStringUTF();
+    }
+
+    @Override
+    public void serialize(DragonfruitOutputStream os) throws IOException {
+        os.writeStringUTF(this.key);
+        os.writeStringUTF(this.productName);
     }
 
 }

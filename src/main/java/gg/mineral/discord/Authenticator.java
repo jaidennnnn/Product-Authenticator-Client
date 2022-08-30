@@ -4,6 +4,11 @@ import java.net.InetSocketAddress;
 
 import gg.dragonfruit.network.ClientHandler;
 import gg.dragonfruit.network.NetworkLibrary;
+import gg.dragonfruit.network.collection.GlueList;
+import gg.dragonfruit.network.packet.Packet;
+import gg.mineral.discord.packet.bidirectional.CheckKeyPacket;
+import gg.mineral.discord.packet.clientbound.InvalidKeyPacket;
+import gg.mineral.discord.packet.clientbound.RequestExpiredPacket;
 import gg.mineral.discord.util.CC;
 import gg.mineral.discord.util.ConsoleUtil;
 
@@ -16,8 +21,12 @@ public class Authenticator {
     public static void checkKey(String productKey, String ipAddress, int port, String productName,
             final Runnable whenAccepted)
             throws InterruptedException {
+        GlueList<Class<? extends Packet>> packetClasses = new GlueList<>();
+        packetClasses.add(CheckKeyPacket.class);
+        packetClasses.add(InvalidKeyPacket.class);
+        packetClasses.add(RequestExpiredPacket.class);
         NetworkLibrary
-                .startClient(new InetSocketAddress(ipAddress, port));
+                .startClient(new InetSocketAddress(ipAddress, port), packetClasses);
 
         Authenticator.whenAccepted = whenAccepted;
 
