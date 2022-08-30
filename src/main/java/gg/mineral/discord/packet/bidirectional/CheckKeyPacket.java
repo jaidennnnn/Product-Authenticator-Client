@@ -18,6 +18,10 @@ public class CheckKeyPacket extends DHEncryptedPacket {
         this.productName = productName;
     }
 
+    public CheckKeyPacket() {
+
+    }
+
     @Override
     public void decrypt(EndToEndEncryption endToEndEncryption) {
         this.key = endToEndEncryption.decrypt(key);
