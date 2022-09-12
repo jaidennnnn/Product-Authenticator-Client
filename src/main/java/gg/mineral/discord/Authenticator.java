@@ -1,5 +1,6 @@
 package gg.mineral.discord;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 
 import gg.dragonfruit.network.ClientHandler;
@@ -20,16 +21,8 @@ public class Authenticator {
 
     public static void checkKey(String productKey, String ipAddress, int port, String productName,
             final Runnable whenAccepted)
-            throws InterruptedException {
-        GlueList<Class<? extends Packet>> packetClasses = new GlueList<>();
-        packetClasses.add(CheckKeyPacket.class);
-        packetClasses.add(InvalidKeyPacket.class);
-        packetClasses.add(RequestExpiredPacket.class);
-        NetworkLibrary
-                .startClient(new InetSocketAddress(ipAddress, port), packetClasses);
-
+            throws InterruptedException, IOException {
         Authenticator.whenAccepted = whenAccepted;
-
         Authenticator.productKey = productKey;
 
         if (productKey == null) {
@@ -39,12 +32,21 @@ public class Authenticator {
             System.exit(0);
         }
 
-        ClientHandler.getServerConnection().sendPacket(
-                new gg.mineral.discord.packet.bidirectional.CheckKeyPacket(
-                        productKey,
-                        Authenticator.productName = productName));
-        ConsoleUtil.send(CC.CYAN,
-                "Please check your private messages on discord.");
+        GlueList<Class<? extends Packet>> packetClasses = new GlueList<>();
+        packetClasses.add(CheckKeyPacket.class);
+        packetClasses.add(InvalidKeyPacket.class);
+        packetClasses.add(RequestExpiredPacket.class);
+
+        NetworkLibrary
+                .startClient(new InetSocketAddress(ipAddress, port), packetClasses, () -> {
+                    ClientHandler.getServerConnection().sendPacket(
+                            new gg.mineral.discord.packet.bidirectional.CheckKeyPacket(
+                                    productKey,
+                                    Authenticator.productName = productName));
+                    ConsoleUtil.send(CC.CYAN,
+                            "Please check your private messages on discord.");
+                });
+
     }
 
     public static void checkProductKey(String receivedProductKey, String receivedProductName) {
