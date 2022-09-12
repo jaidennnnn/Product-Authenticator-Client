@@ -38,14 +38,13 @@ public class Authenticator {
         packetClasses.add(RequestExpiredPacket.class);
 
         NetworkLibrary
-                .startClient(new InetSocketAddress(ipAddress, port), packetClasses, () -> {
-                    ClientHandler.getServerConnection().sendPacket(
-                            new gg.mineral.discord.packet.bidirectional.CheckKeyPacket(
-                                    productKey,
-                                    Authenticator.productName = productName));
-                    ConsoleUtil.send(CC.CYAN,
-                            "Please check your private messages on discord.");
-                });
+                .startClient(new InetSocketAddress(ipAddress, port), packetClasses);
+        ClientHandler.getServerConnection().sendPacket(
+                new gg.mineral.discord.packet.bidirectional.CheckKeyPacket(
+                        productKey,
+                        Authenticator.productName = productName));
+        ConsoleUtil.send(CC.CYAN,
+                "Please check your private messages on discord.");
 
     }
 
