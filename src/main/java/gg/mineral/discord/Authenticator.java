@@ -69,6 +69,7 @@ public class Authenticator {
 
     public static void expired() {
         ConsoleUtil.send(CC.YELLOW, "Your request has expired. Please try again.");
+
         try {
             Thread.sleep(3000);
             System.exit(0);
