@@ -17,7 +17,6 @@ public class InvalidKeyPacket extends Packet {
 
     @Override
     public void deserialize(DragonfruitInputStream is) throws IOException {
-
     }
 
     @Override
