@@ -5,9 +5,9 @@ import java.io.IOException;
 import gg.dragonfruit.network.Connection;
 import gg.dragonfruit.network.encryption.EndToEndEncryption;
 import gg.dragonfruit.network.packet.DHEncryptedPacket;
-import gg.dragonfruit.network.util.DragonfruitInputStream;
-import gg.dragonfruit.network.util.DragonfruitOutputStream;
+import gg.dragonfruit.network.util.PacketUtil;
 import gg.mineral.discord.Authenticator;
+import io.netty.buffer.ByteBuf;
 
 public class CheckKeyPacket extends DHEncryptedPacket {
 
@@ -37,15 +37,15 @@ public class CheckKeyPacket extends DHEncryptedPacket {
     }
 
     @Override
-    public void deserialize(DragonfruitInputStream is) throws IOException {
-        this.key = is.readUTF();
-        this.productName = is.readUTF();
+    public void deserialize(ByteBuf is) throws IOException {
+        this.key = PacketUtil.readString(is);
+        this.productName = PacketUtil.readString(is);
     }
 
     @Override
-    public void serialize(DragonfruitOutputStream os) throws IOException {
-        os.writeUTF(this.key);
-        os.writeUTF(this.productName);
+    public void serialize(ByteBuf os) throws IOException {
+        PacketUtil.writeString(this.key, os);
+        PacketUtil.writeString(this.productName, os);
     }
 
 }
