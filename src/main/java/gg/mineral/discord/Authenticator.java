@@ -16,10 +16,9 @@ import gg.mineral.discord.util.ConsoleUtil;
 public class Authenticator {
 
     static String productKey = null;
-    static String productName = null;
     static Runnable whenAccepted = null;
 
-    public static void checkKey(String productKey, String ipAddress, int port, String productName,
+    public static void checkKey(String productKey, String ipAddress, int port,
             final Runnable whenAccepted)
             throws InterruptedException, IOException {
         Authenticator.whenAccepted = whenAccepted;
@@ -41,17 +40,15 @@ public class Authenticator {
                 .startClient(new InetSocketAddress(ipAddress, port), packetClasses);
         ClientHandler.getServerConnection().sendPacket(
                 new gg.mineral.discord.packet.bidirectional.CheckKeyPacket(
-                        productKey,
-                        Authenticator.productName = productName));
+                        productKey));
         ConsoleUtil.send(CC.CYAN,
                 "Please check your private messages on discord.");
 
     }
 
-    public static void checkProductKey(String receivedProductKey, String receivedProductName) {
-        if (receivedProductKey.equalsIgnoreCase(productKey) && receivedProductName.equalsIgnoreCase(productName)) {
+    public static void checkProductKey(String receivedProductKey) {
+        if (receivedProductKey.equalsIgnoreCase(productKey)) {
             productKey = null;
-            productName = null;
             whenAccepted.run();
         }
     }

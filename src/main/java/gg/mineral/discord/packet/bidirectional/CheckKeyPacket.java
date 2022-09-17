@@ -11,11 +11,10 @@ import io.netty.buffer.ByteBuf;
 
 public class CheckKeyPacket extends DHEncryptedPacket {
 
-    String key, productName;
+    String key;
 
-    public CheckKeyPacket(String key, String productName) {
+    public CheckKeyPacket(String key) {
         this.key = key;
-        this.productName = productName;
     }
 
     public CheckKeyPacket() {
@@ -33,19 +32,17 @@ public class CheckKeyPacket extends DHEncryptedPacket {
 
     @Override
     public void received(Connection connection) {
-        Authenticator.checkProductKey(key, productName);
+        Authenticator.checkProductKey(key);
     }
 
     @Override
     public void deserialize(ByteBuf is) throws IOException {
         this.key = PacketUtil.readString(is);
-        this.productName = PacketUtil.readString(is);
     }
 
     @Override
     public void serialize(ByteBuf os) throws IOException {
         PacketUtil.writeString(this.key, os);
-        PacketUtil.writeString(this.productName, os);
     }
 
 }
