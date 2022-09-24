@@ -19,6 +19,7 @@ public class CheckKeyPacket extends DHEncryptedPacket {
     }
 
     public CheckKeyPacket() {
+
     }
 
     @Override
