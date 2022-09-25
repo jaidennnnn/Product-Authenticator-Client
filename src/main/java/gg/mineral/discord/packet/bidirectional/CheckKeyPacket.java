@@ -2,12 +2,12 @@ package gg.mineral.discord.packet.bidirectional;
 
 import java.io.IOException;
 
+import gg.dragonfruit.netty.buffer.ByteBuf;
 import gg.dragonfruit.network.Connection;
 import gg.dragonfruit.network.encryption.EndToEndEncryption;
 import gg.dragonfruit.network.packet.DHEncryptedPacket;
 import gg.dragonfruit.network.util.PacketUtil;
 import gg.mineral.discord.Authenticator;
-import io.netty.buffer.ByteBuf;
 
 public class CheckKeyPacket extends DHEncryptedPacket {
 
