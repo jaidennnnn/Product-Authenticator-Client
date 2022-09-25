@@ -1,8 +1,0 @@
-gg/mineral/discord/packet/clientbound/InvalidKeyPacket.class
-gg/mineral/discord/util/ConsoleUtil.class
-gg/mineral/discord/util/Product.class
-gg/mineral/discord/Test.class
-gg/mineral/discord/packet/bidirectional/CheckKeyPacket.class
-gg/mineral/discord/util/CC.class
-gg/mineral/discord/Authenticator.class
-gg/mineral/discord/packet/clientbound/RequestExpiredPacket.class

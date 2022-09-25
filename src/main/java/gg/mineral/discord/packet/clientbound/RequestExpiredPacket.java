@@ -2,10 +2,10 @@ package gg.mineral.discord.packet.clientbound;
 
 import java.io.IOException;
 
+import gg.dragonfruit.netty.buffer.ByteBuf;
 import gg.dragonfruit.network.Connection;
 import gg.dragonfruit.network.packet.Packet;
 import gg.mineral.discord.Authenticator;
-import io.netty.buffer.ByteBuf;
 
 public class RequestExpiredPacket extends Packet {
 

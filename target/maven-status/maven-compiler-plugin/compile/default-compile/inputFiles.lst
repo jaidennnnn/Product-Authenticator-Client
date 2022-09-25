@@ -1,8 +1,6 @@
-/home/jaiden/Documents/ProductAuthenticatorClient/src/main/java/gg/mineral/discord/util/ConsoleUtil.java
-/home/jaiden/Documents/ProductAuthenticatorClient/src/main/java/gg/mineral/discord/packet/bidirectional/CheckKeyPacket.java
-/home/jaiden/Documents/ProductAuthenticatorClient/src/main/java/gg/mineral/discord/util/Product.java
-/home/jaiden/Documents/ProductAuthenticatorClient/src/main/java/gg/mineral/discord/util/CC.java
-/home/jaiden/Documents/ProductAuthenticatorClient/src/main/java/gg/mineral/discord/Authenticator.java
-/home/jaiden/Documents/ProductAuthenticatorClient/src/main/java/gg/mineral/discord/packet/clientbound/RequestExpiredPacket.java
-/home/jaiden/Documents/ProductAuthenticatorClient/src/main/java/gg/mineral/discord/Test.java
-/home/jaiden/Documents/ProductAuthenticatorClient/src/main/java/gg/mineral/discord/packet/clientbound/InvalidKeyPacket.java
+/home/jaiden/Documents/Product-Authenticator-Client/src/main/java/gg/mineral/discord/packet/clientbound/RequestExpiredPacket.java
+/home/jaiden/Documents/Product-Authenticator-Client/src/main/java/gg/mineral/discord/packet/bidirectional/CheckKeyPacket.java
+/home/jaiden/Documents/Product-Authenticator-Client/src/main/java/gg/mineral/discord/util/ConsoleUtil.java
+/home/jaiden/Documents/Product-Authenticator-Client/src/main/java/gg/mineral/discord/util/CC.java
+/home/jaiden/Documents/Product-Authenticator-Client/src/main/java/gg/mineral/discord/Authenticator.java
+/home/jaiden/Documents/Product-Authenticator-Client/src/main/java/gg/mineral/discord/packet/clientbound/InvalidKeyPacket.java
