@@ -19,7 +19,10 @@
 ## Example
 
 ```java
-String key = System.console().readLine("Enter Product Key: ");
+String key = null;
+while (key == null || key.length != 36) {
+    key = System.console().readLine("Enter Product Key: ");
+}
 Authenticator.checkKey(/*Product Key*/ key, /*Ip Address*/ "auth.dragonfruit.gg", /*Port*/ 25560,
                                 /*Product Name*/ "Mineral Spigot", () -> {
     // Run app
