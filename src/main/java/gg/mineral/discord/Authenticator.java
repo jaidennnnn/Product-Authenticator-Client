@@ -50,6 +50,11 @@ public class Authenticator {
 
     public static void checkProductKey(String receivedProductKey, String receivedProductName) {
         if (receivedProductKey.equalsIgnoreCase(productKey) && receivedProductName.equalsIgnoreCase(productName)) {
+            try {
+                NetworkLibrary.stop();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             productKey = null;
             productName = null;
             whenAccepted.run();
